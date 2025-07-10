@@ -1,0 +1,164 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}{{ news.title }} - Antigua & Barbuda Pensioners Association{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}" class="text-white">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'news_list' %}" class="text-white">News</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Article</li>
+            </ol>
+        </nav>
+        <h1 class="display-4 fw-bold">{{ news.title }}</h1>
+        <p class="lead">
+            <i class="fas fa-calendar me-2"></i>{{ news.date_published|date:"F j, Y" }}
+        </p>
+    </div>
+</div>
+
+<!-- Article Content -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                {% if news.image %}
+                <img src="{{ news.image.url }}" class="card-img-top" alt="{{ news.title }}" style="height: 400px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body">
+                    <div class="article-content">
+                        {{ news.content|linebreaks }}
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <small class="text-muted">
+                                <i class="fas fa-calendar me-1"></i>Published: {{ news.date_published|date:"F j, Y" }}
+                            </small>
+                        </div>
+                        <div>
+                            <a href="{% url 'news_list' %}" class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to News
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <!-- Related News -->
+            {% if related_news %}
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-newspaper me-2"></i>Related Articles</h5>
+                </div>
+                <div class="card-body">
+                    {% for related in related_news %}
+                    <div class="mb-3 pb-3 border-bottom">
+                        <h6><a href="{% url 'news_detail' related.id %}" class="text-decoration-none">{{ related.title }}</a></h6>
+                        <small class="text-muted">
+                            <i class="fas fa-calendar me-1"></i>{{ related.date_published|date:"M j, Y" }}
+                        </small>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            <!-- Quick Links -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-link me-2"></i>Quick Links</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="{% url 'about_overview' %}" class="text-decoration-none">
+                                <i class="fas fa-info-circle me-2 text-primary"></i>About ABPA
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{% url 'events_list' %}" class="text-decoration-none">
+                                <i class="fas fa-calendar-alt me-2 text-primary"></i>Upcoming Events
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{% url 'membership_apply' %}" class="text-decoration-none">
+                                <i class="fas fa-user-plus me-2 text-primary"></i>Join ABPA
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{% url 'contact' %}" class="text-decoration-none">
+                                <i class="fas fa-envelope me-2 text-primary"></i>Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Newsletter Signup -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5><i class="fas fa-envelope me-2"></i>Stay Updated</h5>
+                    <p class="text-muted">Get the latest news delivered to your inbox.</p>
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-paper-plane me-2"></i>Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Share Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h3><i class="fas fa-share-alt me-2"></i>Share This Article</h3>
+                <p class="lead">Help spread the word about this important news</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fab fa-facebook me-2"></i>Facebook
+                    </a>
+                    <a href="#" class="btn btn-info">
+                        <i class="fab fa-twitter me-2"></i>Twitter
+                    </a>
+                    <a href="#" class="btn btn-success">
+                        <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-envelope me-2"></i>Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h2>Stay Connected with ABPA</h2>
+        <p class="lead">Join our community and stay informed about issues affecting pensioners</p>
+        <a href="{% url 'membership_apply' %}" class="btn btn-light btn-lg me-3">
+            <i class="fas fa-user-plus me-2"></i>Join Now
+        </a>
+        <a href="{% url 'news_list' %}" class="btn btn-outline-light btn-lg">
+            <i class="fas fa-newspaper me-2"></i>More News
+        </a>
+    </div>
+</section>
+{% endblock %} 

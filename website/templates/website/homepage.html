@@ -1,0 +1,197 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Home - Antigua & Barbuda Pensioners Association{% endblock %}
+
+{% block content %}
+<!-- Hero Banner -->
+<header class="bg-primary text-white text-center py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Welcome to ABPA</h1>
+    <p class="lead fs-4">Serving and supporting the pensioners of Antigua & Barbuda</p>
+    <div class="mt-4">
+      <a href="{% url 'about_overview' %}" class="btn btn-light btn-lg me-3">
+        <i class="fas fa-info-circle me-2"></i>Learn More
+      </a>
+      <a href="{% url 'membership_apply' %}" class="btn btn-outline-light btn-lg">
+        <i class="fas fa-user-plus me-2"></i>Join Today
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- News + About Section -->
+<section class="container my-5">
+  <div class="row">
+    <div class="col-lg-6">
+      <h2 class="mb-4"><i class="fas fa-newspaper me-2"></i>Latest News</h2>
+      {% if featured_news %}
+        {% for news in featured_news %}
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{ news.title }}</h5>
+            <p class="card-text text-muted">{{ news.content|truncatewords:20 }}</p>
+            <small class="text-muted">
+              <i class="fas fa-calendar me-1"></i>{{ news.date_published|date:"F j, Y" }}
+            </small>
+            <a href="{% url 'news_detail' news.id %}" class="btn btn-sm btn-outline-primary float-end">Read More</a>
+          </div>
+        </div>
+        {% endfor %}
+        <a href="{% url 'news_list' %}" class="btn btn-outline-primary">
+          <i class="fas fa-arrow-right me-2"></i>View All News
+        </a>
+      {% else %}
+        <div class="alert alert-info">
+          <i class="fas fa-info-circle me-2"></i>No news articles available at the moment.
+        </div>
+      {% endif %}
+    </div>
+    <div class="col-lg-6">
+      <h3><i class="fas fa-users me-2"></i>Who We Are</h3>
+      <p class="lead">The Antigua and Barbuda Pensioners Association is a nonprofit group dedicated to protecting the interests, rights, and well-being of retired public and private sector workers.</p>
+      <p>We provide support, community, and a voice to pensioners, ensuring they stay informed, connected, and respected in society. Through collaboration with national institutions, we help resolve pension-related concerns and advocate for our members.</p>
+      <p>Whether you're a retired government employee, a former educator, or a long-serving private sector contributor, you are welcome to join our growing family.</p>
+      <div class="mt-4">
+        <a href="{% url 'membership_apply' %}" class="btn btn-primary btn-lg me-3">
+          <i class="fas fa-user-plus me-2"></i>Join the Association
+        </a>
+        <a href="{% url 'about_overview' %}" class="btn btn-outline-secondary btn-lg">
+          <i class="fas fa-info-circle me-2"></i>Learn More
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Events Section -->
+{% if upcoming_events %}
+<section class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-5"><i class="fas fa-calendar-alt me-2"></i>Upcoming Events</h2>
+    <div class="row">
+      {% for event in upcoming_events %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          {% if event.image %}
+          <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ event.title }}</h5>
+            <p class="card-text">{{ event.description|truncatewords:15 }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">
+                <i class="fas fa-calendar me-1"></i>{{ event.date|date:"M j, Y" }}
+              </small>
+              <a href="{% url 'events_detail' event.id %}" class="btn btn-sm btn-outline-primary">Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+      <a href="{% url 'events_list' %}" class="btn btn-primary">
+        <i class="fas fa-calendar me-2"></i>View All Events
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Quick Links Section -->
+<section class="container my-5">
+  <h2 class="text-center mb-5"><i class="fas fa-link me-2"></i>Quick Links</h2>
+  <div class="row text-center">
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body">
+          <i class="fas fa-users fa-3x text-primary mb-3"></i>
+          <h4>Our Committee</h4>
+          <p>Meet the volunteers leading the association with care and integrity.</p>
+          <a href="{% url 'about_committee' %}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-right me-2"></i>Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body">
+          <i class="fas fa-gift fa-3x text-primary mb-3"></i>
+          <h4>Membership Benefits</h4>
+          <p>Enjoy access to financial advice, health events, and exclusive discounts.</p>
+          <a href="{% url 'membership_benefits' %}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-right me-2"></i>Explore Benefits
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body">
+          <i class="fas fa-hands-helping fa-3x text-primary mb-3"></i>
+          <h4>Get Involved</h4>
+          <p>Volunteer with us or participate in community outreach and programs.</p>
+          <a href="{% url 'contact' %}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-right me-2"></i>Volunteer
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Committee Members Preview -->
+{% if committee_members %}
+<section class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-5"><i class="fas fa-users me-2"></i>Meet Our Committee</h2>
+    <div class="row">
+      {% for member in committee_members %}
+      <div class="col-md-3 col-sm-6 mb-4">
+        <div class="card text-center border-0 shadow-sm">
+          {% if member.image %}
+          <img src="{{ member.image.url }}" class="card-img-top" alt="{{ member.name }}" style="height: 200px; object-fit: cover;">
+          {% else %}
+          <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+            <i class="fas fa-user fa-3x text-white"></i>
+          </div>
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ member.name }}</h5>
+            <p class="card-text text-muted">{{ member.position }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+      <a href="{% url 'about_committee' %}" class="btn btn-primary">
+        <i class="fas fa-users me-2"></i>View Full Committee
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Stories Section -->
+<section class="container my-5 text-center">
+  <h2><i class="fas fa-comments me-2"></i>Voices of ABPA</h2>
+  <p class="lead">Sharing the stories and contributions of our senior community across Antigua and Barbuda.</p>
+  <a href="{% url 'news_list' %}" class="btn btn-primary btn-lg">
+    <i class="fas fa-newspaper me-2"></i>Read Stories
+  </a>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-primary text-white text-center py-5">
+  <div class="container">
+    <h2 class="display-5 fw-bold">Become a Member Today</h2>
+    <p class="lead">Join our community and enjoy the benefits of membership</p>
+    <a href="{% url 'membership_apply' %}" class="btn btn-light btn-lg">
+      <i class="fas fa-user-plus me-2"></i>Apply Now
+    </a>
+  </div>
+</section>
+{% endblock %}

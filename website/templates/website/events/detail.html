@@ -1,0 +1,217 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}{{ event.title }} - Antigua & Barbuda Pensioners Association{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}" class="text-white">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'events_list' %}" class="text-white">Events</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Event</li>
+            </ol>
+        </nav>
+        <h1 class="display-4 fw-bold">{{ event.title }}</h1>
+        <p class="lead">
+            <i class="fas fa-calendar me-2"></i>{{ event.date|date:"F j, Y" }} at {{ event.date|date:"g:i A" }}
+        </p>
+    </div>
+</div>
+
+<!-- Event Details -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                {% if event.image %}
+                <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}" style="height: 400px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body">
+                    <div class="event-details mb-4">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fas fa-calendar text-primary me-2"></i>Date & Time</h5>
+                                <p>{{ event.date|date:"F j, Y" }}<br>{{ event.date|date:"g:i A" }}</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Location</h5>
+                                <p>{{ event.location }}</p>
+                            </div>
+                        </div>
+                        {% if event.is_featured %}
+                        <div class="alert alert-warning">
+                            <i class="fas fa-star me-2"></i>This is a featured event
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <h4>Event Description</h4>
+                    <div class="event-content">
+                        {{ event.description|linebreaks }}
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="{% url 'events_list' %}" class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Events
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#" class="btn btn-primary me-2">
+                                <i class="fas fa-calendar-plus me-2"></i>Add to Calendar
+                            </a>
+                            <a href="#" class="btn btn-success">
+                                <i class="fas fa-share me-2"></i>Share Event
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <!-- Event Registration -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-ticket-alt me-2"></i>Event Registration</h5>
+                </div>
+                <div class="card-body">
+                    <p>Interested in attending this event?</p>
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Your name">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your email">
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" placeholder="Your phone number">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-check me-2"></i>Register for Event
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Related Events -->
+            {% if related_events %}
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Related Events</h5>
+                </div>
+                <div class="card-body">
+                    {% for related in related_events %}
+                    <div class="mb-3 pb-3 border-bottom">
+                        <h6><a href="{% url 'events_detail' related.id %}" class="text-decoration-none">{{ related.title }}</a></h6>
+                        <small class="text-muted">
+                            <i class="fas fa-calendar me-1"></i>{{ related.date|date:"M j, Y" }}
+                        </small>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            <!-- Quick Links -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-link me-2"></i>Quick Links</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="{% url 'events_list' %}" class="text-decoration-none">
+                                <i class="fas fa-calendar-alt me-2 text-primary"></i>All Events
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{% url 'news_list' %}" class="text-decoration-none">
+                                <i class="fas fa-newspaper me-2 text-primary"></i>Latest News
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{% url 'membership_apply' %}" class="text-decoration-none">
+                                <i class="fas fa-user-plus me-2 text-primary"></i>Join ABPA
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{% url 'contact' %}" class="text-decoration-none">
+                                <i class="fas fa-envelope me-2 text-primary"></i>Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5><i class="fas fa-info-circle me-2"></i>Need Help?</h5>
+                    <p class="text-muted">Contact us for more information about this event.</p>
+                    <p><i class="fas fa-phone me-2 text-primary"></i>(268) 555-1234</p>
+                    <p><i class="fas fa-envelope me-2 text-primary"></i>events@abpensioners.org</p>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-envelope me-2"></i>Send Message
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Event Categories -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5"><i class="fas fa-tags me-2"></i>Event Categories</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                        <h5>Social Events</h5>
+                        <p class="text-muted">Connect with fellow pensioners</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+                        <h5>Educational</h5>
+                        <p class="text-muted">Learn and grow together</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-heartbeat fa-3x text-primary mb-3"></i>
+                        <h5>Health & Wellness</h5>
+                        <p class="text-muted">Stay healthy and active</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h2>Join Our Community</h2>
+        <p class="lead">Become a member to enjoy exclusive access to events and activities</p>
+        <a href="{% url 'membership_apply' %}" class="btn btn-light btn-lg me-3">
+            <i class="fas fa-user-plus me-2"></i>Join ABPA
+        </a>
+        <a href="{% url 'events_list' %}" class="btn btn-outline-light btn-lg">
+            <i class="fas fa-calendar-alt me-2"></i>View All Events
+        </a>
+    </div>
+</section>
+{% endblock %} 

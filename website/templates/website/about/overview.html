@@ -1,0 +1,111 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}About Us - Antigua & Barbuda Pensioners Association{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">About ABPA</h1>
+        <p class="lead">Serving the pensioners of Antigua & Barbuda since our founding</p>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h2><i class="fas fa-users me-2"></i>Our Mission</h2>
+            <p class="lead">The Antigua and Barbuda Pensioners Association (ABPA) is dedicated to protecting the rights, interests, and well-being of all retired workers across our beautiful twin-island nation.</p>
+            
+            <p>Founded with the vision of creating a strong, united voice for pensioners, we work tirelessly to ensure that the contributions of our senior citizens are recognized, respected, and properly rewarded. Our association serves as a bridge between retired workers and the institutions that affect their lives.</p>
+            
+            <h3 class="mt-5"><i class="fas fa-bullseye me-2"></i>Our Objectives</h3>
+            <ul class="list-unstyled">
+                <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i><strong>Advocacy:</strong> Representing pensioners' interests at local and national levels</li>
+                <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i><strong>Support:</strong> Providing guidance and assistance with pension-related matters</li>
+                <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i><strong>Community:</strong> Building a strong network of retired professionals</li>
+                <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i><strong>Education:</strong> Keeping members informed about their rights and benefits</li>
+                <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i><strong>Wellness:</strong> Promoting health and well-being among our members</li>
+            </ul>
+            
+            <h3 class="mt-5"><i class="fas fa-handshake me-2"></i>What We Do</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5><i class="fas fa-gavel text-primary me-2"></i>Advocacy</h5>
+                            <p>We work with government agencies, employers, and other stakeholders to ensure fair treatment of pensioners.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5><i class="fas fa-headset text-primary me-2"></i>Support Services</h5>
+                            <p>Our team provides guidance on pension claims, benefits, and navigating bureaucratic processes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5><i class="fas fa-calendar-alt text-primary me-2"></i>Social Events</h5>
+                            <p>We organize regular meetings, outings, and social gatherings to foster community bonds.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5><i class="fas fa-heartbeat text-primary me-2"></i>Health Programs</h5>
+                            <p>We promote wellness through health fairs, fitness programs, and medical awareness campaigns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h4><i class="fas fa-info-circle me-2"></i>Quick Facts</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-calendar me-2 text-primary"></i><strong>Founded:</strong> 1995</li>
+                        <li class="mb-2"><i class="fas fa-users me-2 text-primary"></i><strong>Members:</strong> 500+</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-primary"></i><strong>Location:</strong> St. John's, Antigua</li>
+                        <li class="mb-2"><i class="fas fa-flag me-2 text-primary"></i><strong>Coverage:</strong> Antigua & Barbuda</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card border-0 shadow-sm mt-4">
+                <div class="card-body">
+                    <h4><i class="fas fa-phone me-2"></i>Get in Touch</h4>
+                    <p><i class="fas fa-envelope me-2 text-primary"></i>info@abpensioners.org</p>
+                    <p><i class="fas fa-phone me-2 text-primary"></i>(268) 555-1234</p>
+                    <p><i class="fas fa-map-marker-alt me-2 text-primary"></i>ABPA Headquarters<br>St. John's, Antigua</p>
+                    <a href="{% url 'contact' %}" class="btn btn-primary w-100">
+                        <i class="fas fa-envelope me-2"></i>Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<section class="bg-light py-5">
+    <div class="container text-center">
+        <h2>Ready to Join Our Community?</h2>
+        <p class="lead">Become a member and enjoy the benefits of being part of the ABPA family.</p>
+        <a href="{% url 'membership_apply' %}" class="btn btn-primary btn-lg me-3">
+            <i class="fas fa-user-plus me-2"></i>Join Now
+        </a>
+        <a href="{% url 'about_committee' %}" class="btn btn-outline-secondary btn-lg">
+            <i class="fas fa-users me-2"></i>Meet Our Committee
+        </a>
+    </div>
+</section>
+{% endblock %} 

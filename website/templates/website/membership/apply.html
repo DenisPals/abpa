@@ -1,0 +1,238 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Apply for Membership - Antigua & Barbuda Pensioners Association{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Join ABPA</h1>
+        <p class="lead">Become a member of the Antigua & Barbuda Pensioners Association</p>
+    </div>
+</div>
+
+<!-- Application Form -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="fas fa-user-plus me-2"></i>Membership Application</h3>
+                </div>
+                <div class="card-body">
+                    <p class="lead mb-4">Please fill out the form below to apply for membership. All fields marked with * are required.</p>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name *</label>
+                                {{ form.first_name }}
+                                {% if form.first_name.errors %}
+                                <div class="text-danger">{{ form.first_name.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.last_name.id_for_label }}" class="form-label">Last Name *</label>
+                                {{ form.last_name }}
+                                {% if form.last_name.errors %}
+                                <div class="text-danger">{{ form.last_name.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">Email Address *</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                <div class="text-danger">{{ form.email.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.phone.id_for_label }}" class="form-label">Phone Number *</label>
+                                {{ form.phone }}
+                                {% if form.phone.errors %}
+                                <div class="text-danger">{{ form.phone.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.address.id_for_label }}" class="form-label">Address *</label>
+                            {{ form.address }}
+                            {% if form.address.errors %}
+                            <div class="text-danger">{{ form.address.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.date_of_birth.id_for_label }}" class="form-label">Date of Birth *</label>
+                                {{ form.date_of_birth }}
+                                {% if form.date_of_birth.errors %}
+                                <div class="text-danger">{{ form.date_of_birth.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.retirement_date.id_for_label }}" class="form-label">Retirement Date *</label>
+                                {{ form.retirement_date }}
+                                {% if form.retirement_date.errors %}
+                                <div class="text-danger">{{ form.retirement_date.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.previous_employer.id_for_label }}" class="form-label">Previous Employer *</label>
+                            {{ form.previous_employer }}
+                            {% if form.previous_employer.errors %}
+                            <div class="text-danger">{{ form.previous_employer.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.reason_for_joining.id_for_label }}" class="form-label">Reason for Joining *</label>
+                            {{ form.reason_for_joining }}
+                            {% if form.reason_for_joining.errors %}
+                            <div class="text-danger">{{ form.reason_for_joining.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">Please tell us why you would like to join ABPA and what you hope to gain from membership.</div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Application Process:</strong> Once submitted, your application will be reviewed by our committee. You will be contacted within 5-7 business days regarding the status of your application.
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Application
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <!-- Membership Benefits -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-gift me-2"></i>Membership Benefits</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Access to pension advocacy</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Social events and activities</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Health and wellness programs</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Educational workshops</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Member discounts</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Newsletter subscription</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Voting rights at AGM</li>
+                    </ul>
+                    <a href="{% url 'membership_benefits' %}" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-arrow-right me-2"></i>Learn More
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Eligibility -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-user-check me-2"></i>Eligibility</h5>
+                </div>
+                <div class="card-body">
+                    <p>Membership is open to:</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-1"><i class="fas fa-user me-2 text-primary"></i>Retired workers</li>
+                        <li class="mb-1"><i class="fas fa-user me-2 text-primary"></i>Pension recipients</li>
+                        <li class="mb-1"><i class="fas fa-user me-2 text-primary"></i>Spouses of deceased pensioners</li>
+                        <li class="mb-1"><i class="fas fa-user me-2 text-primary"></i>Honorary members (by invitation)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5><i class="fas fa-question-circle me-2"></i>Questions?</h5>
+                    <p class="text-muted">Contact us if you need help with your application.</p>
+                    <p><i class="fas fa-phone me-2 text-primary"></i>(268) 555-1234</p>
+                    <p><i class="fas fa-envelope me-2 text-primary"></i>membership@abpensioners.org</p>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-envelope me-2"></i>Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Membership Fees -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5"><i class="fas fa-dollar-sign me-2"></i>Membership Fees</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <h3 class="text-primary">$50</h3>
+                        <h5>Annual Membership</h5>
+                        <p class="text-muted">Valid for one year from date of approval</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Full member benefits</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Voting rights</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Event access</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <h3 class="text-primary">$25</h3>
+                        <h5>New Member Fee</h5>
+                        <p class="text-muted">One-time application processing fee</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Application processing</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Welcome package</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Member card</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <h3 class="text-primary">$75</h3>
+                        <h5>Total First Year</h5>
+                        <p class="text-muted">New member fee + annual membership</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Complete membership</li>
+                            <li><i class="fas fa-check text-success me-2"></i>All benefits included</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Full year access</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h2>Ready to Join Our Community?</h2>
+        <p class="lead">Become part of a supportive network of pensioners in Antigua & Barbuda</p>
+        <a href="#top" class="btn btn-light btn-lg me-3">
+            <i class="fas fa-user-plus me-2"></i>Apply Now
+        </a>
+        <a href="{% url 'about_overview' %}" class="btn btn-outline-light btn-lg">
+            <i class="fas fa-info-circle me-2"></i>Learn More
+        </a>
+    </div>
+</section>
+{% endblock %} 

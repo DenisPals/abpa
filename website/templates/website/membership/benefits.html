@@ -1,0 +1,312 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Membership Benefits - Antigua & Barbuda Pensioners Association{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Membership Benefits</h1>
+        <p class="lead">Discover all the advantages of being an ABPA member</p>
+    </div>
+</div>
+
+<!-- Main Benefits -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h2 class="mb-4"><i class="fas fa-star me-2"></i>Why Join ABPA?</h2>
+            <p class="lead">As a member of the Antigua & Barbuda Pensioners Association, you'll enjoy a wide range of benefits designed to support and enhance your retirement years.</p>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-gavel fa-3x text-primary"></i>
+                            </div>
+                            <h5>Pension Advocacy</h5>
+                            <p>We actively represent your interests to government agencies and employers, ensuring your pension rights are protected and enhanced.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Policy representation</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Legal support</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Dispute resolution</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-users fa-3x text-primary"></i>
+                            </div>
+                            <h5>Social Community</h5>
+                            <p>Connect with fellow pensioners through regular social events, outings, and community activities.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Monthly meetings</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Social outings</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Friendship groups</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-heartbeat fa-3x text-primary"></i>
+                            </div>
+                            <h5>Health & Wellness</h5>
+                            <p>Access to health programs, fitness activities, and wellness initiatives designed for seniors.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Health fairs</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Fitness programs</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Medical screenings</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-graduation-cap fa-3x text-primary"></i>
+                            </div>
+                            <h5>Educational Programs</h5>
+                            <p>Stay informed and learn new skills through workshops, seminars, and educational sessions.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Financial literacy</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Technology training</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Legal awareness</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <!-- Quick Benefits Summary -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-list me-2"></i>Benefits Summary</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Pension advocacy</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Social events</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Health programs</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Educational workshops</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Member discounts</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Newsletter</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Voting rights</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Support network</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Membership Fees -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-dollar-sign me-2"></i>Membership Cost</h5>
+                </div>
+                <div class="card-body">
+                    <h4 class="text-primary">$75</h4>
+                    <p class="text-muted">Total first year (includes application fee)</p>
+                    <hr>
+                    <p><strong>Annual renewal:</strong> $50</p>
+                    <a href="{% url 'membership_apply' %}" class="btn btn-primary w-100">
+                        <i class="fas fa-user-plus me-2"></i>Join Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Contact -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5><i class="fas fa-question-circle me-2"></i>Questions?</h5>
+                    <p class="text-muted">Contact us to learn more about membership benefits.</p>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-envelope me-2"></i>Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detailed Benefits Sections -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5"><i class="fas fa-gift me-2"></i>Comprehensive Benefits</h2>
+        
+        <!-- Advocacy Benefits -->
+        <div class="row mb-5">
+            <div class="col-lg-6">
+                <h3><i class="fas fa-gavel me-2"></i>Advocacy & Support</h3>
+                <p>We work tirelessly to protect and enhance your pension rights through various channels:</p>
+                <ul>
+                    <li><strong>Government Representation:</strong> Regular meetings with government officials to discuss pension policies</li>
+                    <li><strong>Legal Assistance:</strong> Access to legal advice and support for pension-related issues</li>
+                    <li><strong>Policy Monitoring:</strong> Tracking legislative changes that affect pensioners</li>
+                    <li><strong>Dispute Resolution:</strong> Help resolving pension-related disputes with employers</li>
+                    <li><strong>Information Sharing:</strong> Regular updates on pension law changes and their impact</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="fas fa-chart-line me-2"></i>Recent Achievements</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Successfully lobbied for pension indexing</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Improved healthcare benefits for pensioners</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Reduced processing times for pension claims</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Enhanced survivor benefits</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Benefits -->
+        <div class="row mb-5">
+            <div class="col-lg-6 order-lg-2">
+                <h3><i class="fas fa-users me-2"></i>Social & Community</h3>
+                <p>Build lasting friendships and stay connected with your community:</p>
+                <ul>
+                    <li><strong>Monthly Meetings:</strong> Regular gatherings to discuss issues and socialize</li>
+                    <li><strong>Social Outings:</strong> Organized trips to local attractions and events</li>
+                    <li><strong>Interest Groups:</strong> Join book clubs, walking groups, and hobby circles</li>
+                    <li><strong>Celebrations:</strong> Special events for holidays and member milestones</li>
+                    <li><strong>Volunteer Opportunities:</strong> Give back to the community through various programs</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="fas fa-calendar-alt me-2"></i>Upcoming Social Events</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-coffee me-2 text-primary"></i>Weekly coffee mornings</li>
+                            <li class="mb-2"><i class="fas fa-walking me-2 text-primary"></i>Walking group (Mon/Wed)</li>
+                            <li class="mb-2"><i class="fas fa-book me-2 text-primary"></i>Book club (monthly)</li>
+                            <li class="mb-2"><i class="fas fa-utensils me-2 text-primary"></i>Lunch outings (monthly)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Health Benefits -->
+        <div class="row mb-5">
+            <div class="col-lg-6">
+                <h3><i class="fas fa-heartbeat me-2"></i>Health & Wellness</h3>
+                <p>Stay healthy and active with our comprehensive wellness programs:</p>
+                <ul>
+                    <li><strong>Health Fairs:</strong> Regular health screenings and medical check-ups</li>
+                    <li><strong>Fitness Programs:</strong> Exercise classes designed for seniors</li>
+                    <li><strong>Nutrition Workshops:</strong> Learn about healthy eating habits</li>
+                    <li><strong>Mental Health Support:</strong> Access to counseling and support groups</li>
+                    <li><strong>Preventive Care:</strong> Education on disease prevention and management</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="fas fa-medical-kit me-2"></i>Health Services</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-stethoscope me-2 text-primary"></i>Free health screenings</li>
+                            <li class="mb-2"><i class="fas fa-pills me-2 text-primary"></i>Medication reviews</li>
+                            <li class="mb-2"><i class="fas fa-dumbbell me-2 text-primary"></i>Fitness classes</li>
+                            <li class="mb-2"><i class="fas fa-brain me-2 text-primary"></i>Memory exercises</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Educational Benefits -->
+        <div class="row">
+            <div class="col-lg-6 order-lg-2">
+                <h3><i class="fas fa-graduation-cap me-2"></i>Education & Learning</h3>
+                <p>Continue learning and stay informed with our educational programs:</p>
+                <ul>
+                    <li><strong>Financial Literacy:</strong> Workshops on managing retirement finances</li>
+                    <li><strong>Technology Training:</strong> Learn to use computers, smartphones, and the internet</li>
+                    <li><strong>Legal Awareness:</strong> Understanding your rights and legal matters</li>
+                    <li><strong>Current Events:</strong> Discussions on issues affecting pensioners</li>
+                    <li><strong>Skill Development:</strong> Learn new hobbies and crafts</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="fas fa-laptop me-2"></i>Learning Opportunities</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-calculator me-2 text-primary"></i>Financial planning workshops</li>
+                            <li class="mb-2"><i class="fas fa-mobile-alt me-2 text-primary"></i>Smartphone tutorials</li>
+                            <li class="mb-2"><i class="fas fa-gavel me-2 text-primary"></i>Legal rights seminars</li>
+                            <li class="mb-2"><i class="fas fa-palette me-2 text-primary"></i>Art and craft classes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Member Testimonials -->
+<section class="container my-5">
+    <h2 class="text-center mb-5"><i class="fas fa-comments me-2"></i>What Our Members Say</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-quote-left fa-2x text-primary mb-3"></i>
+                    <p>"ABPA has been a lifeline for me. The advocacy work they do has helped me get the pension benefits I was entitled to."</p>
+                    <h6 class="text-primary">- Mrs. Sarah Johnson</h6>
+                    <small class="text-muted">Member since 2018</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-quote-left fa-2x text-primary mb-3"></i>
+                    <p>"The social events have helped me make new friends and stay active. I look forward to our monthly meetings."</p>
+                    <h6 class="text-primary">- Mr. Robert Williams</h6>
+                    <small class="text-muted">Member since 2019</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-quote-left fa-2x text-primary mb-3"></i>
+                    <p>"The health programs have been wonderful. I've learned so much about staying healthy in retirement."</p>
+                    <h6 class="text-primary">- Mrs. Mary Thompson</h6>
+                    <small class="text-muted">Member since 2020</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h2>Ready to Enjoy These Benefits?</h2>
+        <p class="lead">Join ABPA today and start enjoying all these amazing benefits</p>
+        <a href="{% url 'membership_apply' %}" class="btn btn-light btn-lg me-3">
+            <i class="fas fa-user-plus me-2"></i>Apply Now
+        </a>
+        <a href="{% url 'about_overview' %}" class="btn btn-outline-light btn-lg">
+            <i class="fas fa-info-circle me-2"></i>Learn More
+        </a>
+    </div>
+</section>
+{% endblock %} 

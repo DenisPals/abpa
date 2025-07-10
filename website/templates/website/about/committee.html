@@ -1,0 +1,198 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Our Committee - Antigua & Barbuda Pensioners Association{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Our Committee</h1>
+        <p class="lead">Meet the dedicated volunteers leading our association</p>
+    </div>
+</div>
+
+<!-- Committee Members -->
+<div class="container my-5">
+    {% if committee_members %}
+    <div class="row">
+        {% for member in committee_members %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                {% if member.image %}
+                <img src="{{ member.image.url }}" class="card-img-top" alt="{{ member.name }}" style="height: 250px; object-fit: cover;">
+                {% else %}
+                <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 250px;">
+                    <i class="fas fa-user fa-4x text-white"></i>
+                </div>
+                {% endif %}
+                <div class="card-body text-center">
+                    <h4 class="card-title">{{ member.name }}</h4>
+                    <h6 class="text-primary mb-3">{{ member.position }}</h6>
+                    <p class="card-text">{{ member.bio|truncatewords:30 }}</p>
+                    {% if member.email or member.phone %}
+                    <div class="mt-3">
+                        {% if member.email %}
+                        <a href="mailto:{{ member.email }}" class="btn btn-sm btn-outline-primary me-2">
+                            <i class="fas fa-envelope me-1"></i>Email
+                        </a>
+                        {% endif %}
+                        {% if member.phone %}
+                        <a href="tel:{{ member.phone }}" class="btn btn-sm btn-outline-secondary">
+                            <i class="fas fa-phone me-1"></i>Call
+                        </a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <i class="fas fa-users fa-4x text-muted mb-4"></i>
+        <h3>Committee Information Coming Soon</h3>
+        <p class="lead text-muted">Our committee members will be listed here once the information is available.</p>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Committee Structure -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5"><i class="fas fa-sitemap me-2"></i>Committee Structure</h2>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-crown fa-3x text-primary mb-3"></i>
+                        <h5>President</h5>
+                        <p class="text-muted">Leads the association and represents members at all levels</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-user-tie fa-3x text-primary mb-3"></i>
+                        <h5>Vice President</h5>
+                        <p class="text-muted">Supports the president and oversees special projects</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-file-alt fa-3x text-primary mb-3"></i>
+                        <h5>Secretary</h5>
+                        <p class="text-muted">Manages records, correspondence, and meeting minutes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-calculator fa-3x text-primary mb-3"></i>
+                        <h5>Treasurer</h5>
+                        <p class="text-muted">Manages finances and prepares financial reports</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Committee Responsibilities -->
+<section class="container my-5">
+    <h2 class="text-center mb-5"><i class="fas fa-tasks me-2"></i>Committee Responsibilities</h2>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <h5><i class="fas fa-gavel text-primary me-2"></i>Policy & Advocacy</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Represent member interests to government</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advocate for pension reform</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Monitor legislative changes</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Liaise with other organizations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <h5><i class="fas fa-users text-primary me-2"></i>Member Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Process membership applications</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Provide member support</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Organize social events</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Maintain member database</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <h5><i class="fas fa-calendar-alt text-primary me-2"></i>Events & Programs</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Plan annual meetings</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Organize health fairs</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Coordinate educational workshops</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Arrange social outings</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <h5><i class="fas fa-chart-line text-primary me-2"></i>Finance & Administration</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Manage association funds</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Prepare annual budgets</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Maintain financial records</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Ensure compliance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Election Information -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5"><i class="fas fa-vote-yea me-2"></i>Committee Elections</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5><i class="fas fa-info-circle text-primary me-2"></i>How Elections Work</h5>
+                        <p>Committee members are elected annually by the general membership at our Annual General Meeting (AGM). All members in good standing are eligible to vote and run for committee positions.</p>
+                        
+                        <h6 class="mt-4"><i class="fas fa-calendar text-primary me-2"></i>Election Timeline</h6>
+                        <ul>
+                            <li><strong>Nominations Open:</strong> 2 months before AGM</li>
+                            <li><strong>Nominations Close:</strong> 1 month before AGM</li>
+                            <li><strong>Election Day:</strong> Annual General Meeting</li>
+                            <li><strong>Term Length:</strong> 2 years (staggered)</li>
+                        </ul>
+                        
+                        <div class="mt-4">
+                            <a href="{% url 'contact' %}" class="btn btn-primary me-3">
+                                <i class="fas fa-envelope me-2"></i>Contact Committee
+                            </a>
+                            <a href="{% url 'membership_apply' %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-user-plus me-2"></i>Become a Member
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

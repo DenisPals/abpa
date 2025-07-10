@@ -1,0 +1,252 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Events - Antigua & Barbuda Pensioners Association{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Events & Activities</h1>
+        <p class="lead">Join us for social gatherings, educational workshops, and community events</p>
+    </div>
+</div>
+
+<!-- Events List -->
+<div class="container my-5">
+    {% if page_obj %}
+    <div class="row">
+        {% for event in page_obj %}
+        <div class="col-lg-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                {% if event.image %}
+                <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}" style="height: 250px; object-fit: cover;">
+                {% else %}
+                <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 250px;">
+                    <i class="fas fa-calendar-alt fa-3x text-white"></i>
+                </div>
+                {% endif %}
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h4 class="card-title">{{ event.title }}</h4>
+                        {% if event.is_featured %}
+                        <span class="badge bg-warning text-dark">
+                            <i class="fas fa-star me-1"></i>Featured
+                        </span>
+                        {% endif %}
+                    </div>
+                    <p class="card-text">{{ event.description|truncatewords:30 }}</p>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <small class="text-muted">
+                                <i class="fas fa-calendar me-1"></i>{{ event.date|date:"M j, Y" }}
+                            </small>
+                        </div>
+                        <div class="col-6">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i>{{ event.date|date:"g:i A" }}
+                            </small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <small class="text-muted">
+                            <i class="fas fa-map-marker-alt me-1"></i>{{ event.location }}
+                        </small>
+                    </div>
+                    <a href="{% url 'events_detail' event.id %}" class="btn btn-primary">
+                        <i class="fas fa-info-circle me-2"></i>Event Details
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
+    <nav aria-label="Events pagination" class="mt-5">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                    <i class="fas fa-chevron-left me-1"></i>Previous
+                </a>
+            </li>
+            {% endif %}
+            
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="page-item active">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+            
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                    Next<i class="fas fa-chevron-right ms-1"></i>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+    
+    {% else %}
+    <div class="text-center py-5">
+        <i class="fas fa-calendar-alt fa-4x text-muted mb-4"></i>
+        <h3>No Events Scheduled</h3>
+        <p class="lead text-muted">Check back soon for upcoming events and activities.</p>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Event Categories -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5"><i class="fas fa-tags me-2"></i>Event Categories</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                        <h5>Social Gatherings</h5>
+                        <p class="text-muted">Meet and connect with fellow pensioners</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+                        <h5>Educational Workshops</h5>
+                        <p class="text-muted">Learn about pensions, health, and technology</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-heartbeat fa-3x text-primary mb-3"></i>
+                        <h5>Health & Wellness</h5>
+                        <p class="text-muted">Health fairs and fitness activities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming Highlights -->
+<section class="container my-5">
+    <h2 class="text-center mb-5"><i class="fas fa-star me-2"></i>Upcoming Highlights</h2>
+    <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card border-0 shadow-sm text-center">
+                <div class="card-body">
+                    <i class="fas fa-calendar-day fa-3x text-primary mb-3"></i>
+                    <h5>Monthly Meeting</h5>
+                    <p class="text-muted">First Tuesday of every month</p>
+                    <small class="text-primary">2:00 PM - ABPA Headquarters</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card border-0 shadow-sm text-center">
+                <div class="card-body">
+                    <i class="fas fa-coffee fa-3x text-primary mb-3"></i>
+                    <h5>Social Hour</h5>
+                    <p class="text-muted">Every Friday afternoon</p>
+                    <small class="text-primary">3:00 PM - Various Locations</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card border-0 shadow-sm text-center">
+                <div class="card-body">
+                    <i class="fas fa-walking fa-3x text-primary mb-3"></i>
+                    <h5>Walking Group</h5>
+                    <p class="text-muted">Every Monday and Wednesday</p>
+                    <small class="text-primary">7:00 AM - Fort James Beach</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card border-0 shadow-sm text-center">
+                <div class="card-body">
+                    <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                    <h5>Book Club</h5>
+                    <p class="text-muted">Third Thursday monthly</p>
+                    <small class="text-primary">2:00 PM - Public Library</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Event Registration -->
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h2>Stay Updated on Events</h2>
+        <p class="lead">Subscribe to our events newsletter to never miss an activity</p>
+        <form class="row g-3 justify-content-center">
+            <div class="col-md-8">
+                <input type="email" class="form-control form-control-lg" placeholder="Enter your email address">
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-light btn-lg w-100">
+                    <i class="fas fa-paper-plane me-2"></i>Subscribe
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Quick Links -->
+<section class="container my-5">
+    <h2 class="text-center mb-5"><i class="fas fa-link me-2"></i>Quick Links</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm text-center">
+                <div class="card-body">
+                    <i class="fas fa-newspaper fa-3x text-primary mb-3"></i>
+                    <h5>Latest News</h5>
+                    <p class="text-muted">Stay informed about pensioner issues</p>
+                    <a href="{% url 'news_list' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-right me-2"></i>Read News
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm text-center">
+                <div class="card-body">
+                    <i class="fas fa-user-plus fa-3x text-primary mb-3"></i>
+                    <h5>Join ABPA</h5>
+                    <p class="text-muted">Become a member and enjoy exclusive benefits</p>
+                    <a href="{% url 'membership_apply' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-right me-2"></i>Apply Now
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm text-center">
+                <div class="card-body">
+                    <i class="fas fa-phone fa-3x text-primary mb-3"></i>
+                    <h5>Contact Us</h5>
+                    <p class="text-muted">Get in touch for more information</p>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-right me-2"></i>Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Antigua & Barbuda Pensioners Association{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'website/styles.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{% url 'index' %}">
+                <i class="fas fa-users me-2"></i>ABPA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'about_overview' %}">Overview</a></li>
+                            <li><a class="dropdown-item" href="{% url 'about_history' %}">History</a></li>
+                            <li><a class="dropdown-item" href="{% url 'about_committee' %}">The Committee</a></li>
+                            <li><a class="dropdown-item" href="{% url 'about_constitution' %}">Our Constitution</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="joinDropdown" role="button" data-bs-toggle="dropdown">
+                            Join Us
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'membership_apply' %}">Apply</a></li>
+                            <li><a class="dropdown-item" href="{% url 'membership_benefits' %}">Benefits</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'news_list' %}">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'events_list' %}">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary ms-3" href="{% url 'membership_apply' %}">
+                            <i class="fas fa-user-plus me-1"></i>Join Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div class="container mt-5 pt-5">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main class="mt-5 pt-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-users me-2"></i>Antigua & Barbuda Pensioners Association</h5>
+                    <p class="mb-1">ABPA Headquarters</p>
+                    <p class="mb-1">St. John's, Antigua</p>
+                    <p class="mb-1"><i class="fas fa-envelope me-2"></i>info@abpensioners.org</p>
+                    <p class="mb-1"><i class="fas fa-phone me-2"></i>(268) 555-1234</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'about_overview' %}" class="text-white-50">About Us</a></li>
+                        <li><a href="{% url 'membership_apply' %}" class="text-white-50">Join ABPA</a></li>
+                        <li><a href="{% url 'news_list' %}" class="text-white-50">News</a></li>
+                        <li><a href="{% url 'contact' %}" class="text-white-50">Contact</a></li>
+                    </ul>
+                    <hr class="my-3">
+                    <p class="mb-1">Ministry of Social Transformation</p>
+                    <p class="mb-1">Valley Road, St. John's</p>
+                    <p class="mb-1">Tel: (268) 555-5678</p>
+                    <p class="mb-1">Website: abgov.ag</p>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 Antigua & Barbuda Pensioners Association. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

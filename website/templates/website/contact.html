@@ -1,0 +1,295 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Contact Us - Antigua & Barbuda Pensioners Association{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Contact Us</h1>
+        <p class="lead">Get in touch with the Antigua & Barbuda Pensioners Association</p>
+    </div>
+</div>
+
+<!-- Contact Information and Form -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="fas fa-envelope me-2"></i>Send Us a Message</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.name.id_for_label }}" class="form-label">Your Name *</label>
+                                {{ form.name }}
+                                {% if form.name.errors %}
+                                <div class="text-danger">{{ form.name.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">Email Address *</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                <div class="text-danger">{{ form.email.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.subject.id_for_label }}" class="form-label">Subject *</label>
+                            {{ form.subject }}
+                            {% if form.subject.errors %}
+                            <div class="text-danger">{{ form.subject.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.message.id_for_label }}" class="form-label">Message *</label>
+                            {{ form.message }}
+                            {% if form.message.errors %}
+                            <div class="text-danger">{{ form.message.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <!-- Contact Information -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Contact Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <h6><i class="fas fa-map-marker-alt text-primary me-2"></i>Address</h6>
+                        <p class="mb-0">ABPA Headquarters<br>St. John's, Antigua<br>Antigua & Barbuda</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6><i class="fas fa-phone text-primary me-2"></i>Phone</h6>
+                        <p class="mb-0">(268) 555-1234</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6><i class="fas fa-envelope text-primary me-2"></i>Email</h6>
+                        <p class="mb-0">info@abpensioners.org</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6><i class="fas fa-clock text-primary me-2"></i>Office Hours</h6>
+                        <p class="mb-0">Monday - Friday<br>9:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Contact -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-phone me-2"></i>Quick Contact</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="tel:+12685551234" class="btn btn-outline-primary">
+                            <i class="fas fa-phone me-2"></i>Call Us
+                        </a>
+                        <a href="mailto:info@abpensioners.org" class="btn btn-outline-primary">
+                            <i class="fas fa-envelope me-2"></i>Email Us
+                        </a>
+                        <a href="#" class="btn btn-outline-primary">
+                            <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Office Location -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5><i class="fas fa-map me-2"></i>Find Us</h5>
+                    <p class="text-muted">Visit our office in St. John's for in-person assistance.</p>
+                    <div class="bg-light p-3 rounded">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Free parking available. Wheelchair accessible.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Department Contacts -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5"><i class="fas fa-users me-2"></i>Department Contacts</h2>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-user-plus fa-3x text-primary mb-3"></i>
+                        <h5>Membership</h5>
+                        <p class="text-muted">Join ABPA and get support</p>
+                        <p><i class="fas fa-envelope me-2 text-primary"></i>membership@abpensioners.org</p>
+                        <p><i class="fas fa-phone me-2 text-primary"></i>(268) 555-1235</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-gavel fa-3x text-primary mb-3"></i>
+                        <h5>Advocacy</h5>
+                        <p class="text-muted">Pension rights and legal support</p>
+                        <p><i class="fas fa-envelope me-2 text-primary"></i>advocacy@abpensioners.org</p>
+                        <p><i class="fas fa-phone me-2 text-primary"></i>(268) 555-1236</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-calendar-alt fa-3x text-primary mb-3"></i>
+                        <h5>Events</h5>
+                        <p class="text-muted">Social events and activities</p>
+                        <p><i class="fas fa-envelope me-2 text-primary"></i>events@abpensioners.org</p>
+                        <p><i class="fas fa-phone me-2 text-primary"></i>(268) 555-1237</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-heartbeat fa-3x text-primary mb-3"></i>
+                        <h5>Health & Wellness</h5>
+                        <p class="text-muted">Health programs and support</p>
+                        <p><i class="fas fa-envelope me-2 text-primary"></i>health@abpensioners.org</p>
+                        <p><i class="fas fa-phone me-2 text-primary"></i>(268) 555-1238</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="container my-5">
+    <h2 class="text-center mb-5"><i class="fas fa-question-circle me-2"></i>Frequently Asked Questions</h2>
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq1">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                            How do I become a member of ABPA?
+                        </button>
+                    </h2>
+                    <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            You can become a member by filling out our online application form or visiting our office. The application process takes 5-7 business days for review.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                            What are the membership fees?
+                        </button>
+                    </h2>
+                    <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            New members pay $75 for the first year (includes $25 application fee + $50 annual membership). Annual renewal is $50.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                            Can you help with pension-related issues?
+                        </button>
+                    </h2>
+                    <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we provide advocacy and support for pension-related issues. Contact our advocacy department for assistance.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                            When are your office hours?
+                        </button>
+                    </h2>
+                    <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Our office is open Monday through Friday from 9:00 AM to 5:00 PM. We're closed on weekends and public holidays.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq5">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                            Do you offer health and wellness programs?
+                        </button>
+                    </h2>
+                    <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we offer various health and wellness programs including fitness classes, health screenings, and wellness workshops.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5"><i class="fas fa-map-marked-alt me-2"></i>Find Our Office</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="bg-secondary text-white text-center py-5 rounded">
+                            <i class="fas fa-map fa-4x mb-3"></i>
+                            <h4>Interactive Map Coming Soon</h4>
+                            <p>We're working on adding an interactive map to help you find our office location.</p>
+                            <p class="mb-0"><strong>Address:</strong> ABPA Headquarters, St. John's, Antigua</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h2>Ready to Get Started?</h2>
+        <p class="lead">Contact us today to learn more about membership or get help with your questions</p>
+        <a href="{% url 'membership_apply' %}" class="btn btn-light btn-lg me-3">
+            <i class="fas fa-user-plus me-2"></i>Join ABPA
+        </a>
+        <a href="tel:+12685551234" class="btn btn-outline-light btn-lg">
+            <i class="fas fa-phone me-2"></i>Call Now
+        </a>
+    </div>
+</section>
+{% endblock %} 
